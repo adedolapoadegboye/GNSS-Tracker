@@ -148,14 +148,6 @@ Geoid Height: 46.9 M
 
 ---
 
-## 🧑‍💻 Author
-
-**Ade** 
-GNSS Enthusiast & Embedded Developer
-Feel free to contribute or fork the project!
-
----
-
 ## 📄 License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
