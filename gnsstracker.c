@@ -1,3 +1,36 @@
+/**
+ * @file gnsstracker.c
+ * @brief GNSS Tracker Application
+ *
+ * This program initializes and runs a GNSS tracker application. It sets up a serial
+ * connection to a GNSS device, logs GNSS data, processes NMEA sentences, and handles
+ * user commands via threads.
+ *
+ * The program performs the following tasks:
+ * - Initializes the serial port with a specified port and baud rate.
+ * - Sets up logging resources for GNSS data.
+ * - Creates and manages threads for command handling, GNSS data logging, and NMEA data processing.
+ * - Ensures proper cleanup of resources upon program exit.
+ *
+ * Threads:
+ * - Command Thread: Handles user commands.
+ * - Log Thread: Logs GNSS data from the serial port.
+ * - NMEA Thread: Processes NMEA sentences from the GNSS data.
+ *
+ * Error Handling:
+ * - The program uses `error_codes()` to handle various error scenarios, such as
+ *   invalid serial port configuration, thread creation failures, and thread joining failures.
+ *
+ * Cleanup:
+ * - The `atexit()` function is used to register a cleanup function that ensures
+ *   proper resource deallocation, such as closing the serial port.
+ *
+ * @note The program exits with specific error codes in case of failures.
+ * @note The `DURATION` macro determines how long the threads will run.
+ *
+ * @author Ade
+ * @date 2025-09-01
+ */
 #include "src/gnsstracker.h"
 
 int main()

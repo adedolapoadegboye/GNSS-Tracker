@@ -4,7 +4,7 @@ extern char filename[64];
 extern int serial_fd;
 extern FILE *logfile;
 volatile bool gga_ready_flag = false;
-extern char buffer[256];
+extern char buffer[128];
 int max_fixes = 86400;
 
 // Function to set up the serial port
@@ -48,6 +48,7 @@ void *log_serial_data()
     if (DURATION > 0)
     {
         printf("Logging GNSS data to %s for %d seconds...\n", filename, DURATION);
+        handle_commands((void *)(intptr_t)'G');
         while (time(NULL) - start_time < DURATION)
         {
             int bytes_read = read(serial_fd, buffer, sizeof(buffer) - 1);
@@ -67,6 +68,7 @@ void *log_serial_data()
     else if (DURATION == 0)
     {
         printf("Logging GNSS data to %s...\n", filename);
+        handle_commands((void *)(intptr_t)'G');
         while (max_fixes > 0)
         {
             int bytes_read = read(serial_fd, buffer, sizeof(buffer) - 1);

@@ -16,7 +16,7 @@
 void init();
 char filename[64];
 FILE *logfile;
-char buffer[256];
+char buffer[128];
 char resultfilename[64];
 FILE *resultfile;
 char commandfilename[64];
@@ -26,7 +26,7 @@ FILE *commandfile;
 #define PORT "/dev/tty.usbserial-141120"
 // #define PORT "dev/ttyUSB0"
 #define BAUD_RATE B115200
-#define DURATION 5 // Duration in seconds, set to 0 for indefinite logging
+#define DURATION 15 // Duration in seconds, set to 0 for indefinite logging
 int serial_fd;
 
 // Function to set up the serial port

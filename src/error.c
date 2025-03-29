@@ -52,7 +52,9 @@ void error_codes(const int code)
 void cleanup()
 {
     printf("Cleaning up...\n");
-    handle_commands((void *)(intptr_t)'T');
+    // handle_commands((void *)(intptr_t)'T');
+    handle_commands((void *)(intptr_t)'S');
+    tcdrain(serial_fd); // Ensure all output is transmitted
     close(serial_fd);
     fclose(logfile);
     fclose(resultfile);
